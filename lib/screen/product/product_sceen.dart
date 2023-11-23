@@ -1,5 +1,8 @@
 import 'package:f_jzshop/app/config/reponsive.dart';
 import 'package:f_jzshop/app/model/product_model.dart';
+import 'package:f_jzshop/app/model/topping_model.dart';
+import 'package:f_jzshop/screen/cart/cart_screen.dart';
+import 'package:f_jzshop/widget/layout/cart/bottom_sheet.dart';
 import 'package:f_jzshop/widget/layout/product/detail_product.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,7 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+      List<ToppingModel> toppings = [];
   @override
   Widget build(BuildContext context) {
     var product = widget.product;
@@ -42,7 +46,9 @@ class _ProductScreenState extends State<ProductScreen> {
                         child: IconButton(
                             onPressed: () { /*
                             => Navigator.pushNamed(context, "Cart")
-                             */},
+                             */
+                             Navigator.push(context, MaterialPageRoute(builder: (context)=> const CartScreen()));
+                            },
                             icon: const Icon(
                               Icons.shopping_cart_sharp,
                               color: Colors.blue
@@ -55,8 +61,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           flex: 5,
                           child: ElevatedButton(
                               onPressed: () {
-                                /*
-                                  => showModalBottomSheet(
+                                   showModalBottomSheet(
                                     context: context,
                                     isScrollControlled: true,
                                     enableDrag: true,
@@ -66,11 +71,10 @@ class _ProductScreenState extends State<ProductScreen> {
                                           topLeft: Radius.circular(15),
                                           topRight: Radius.circular(15)),
                                     ),
-                                    builder: (context) => AddCartScreen(
+                                    builder: (context) => BottomSheetCart(
                                           product: product,
-                                          topping: toppings,
-                                        ))
-                                   */
+                                          topping: toppings
+                                        ));
                               },
                               style: ButtonStyle(
                                 backgroundColor: const MaterialStatePropertyAll(Colors.blue),
@@ -80,7 +84,7 @@ class _ProductScreenState extends State<ProductScreen> {
                               ),
                               child: const Text("Add To Cart", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))))
                     ])
-                  : Text("Notification",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)))),
+                  : const Text("Notification",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)))),
     );
   }
 }

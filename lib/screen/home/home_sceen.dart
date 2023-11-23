@@ -33,20 +33,20 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 carousel(300,160),
                 categoryList(categories, 250, 2),
-                productList(products, 5, 0.77, 150)
+                productList(products, 5, MediaQuery.of(context).size.width/ 2100, 150)
               ],
             ),
             tablet: Column(
               children: [
                 carousel(300,50),
                 categoryList(categories, 90, 1.5),
-                productList(products, 4, 0.74, 40)
+                productList(products, 4, MediaQuery.of(context).size.width/ 1450, 40)
               ],
             ),
             mobile: Column(children: [
                carousel(200,10),
                categoryList(categories, 0, 1.2),
-               productList(products, 3, 0.69, 20)
+               productList(products, 3, MediaQuery.of(context).size.width/ 850, 20)
             ]),
           ),
         ]),
@@ -66,7 +66,7 @@ Widget carousel(double heightImg,double padding){
                 itemCount: imgList.length,
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) =>
-                        Container(
+                         SizedBox(
                           child: Image.network(imgList[itemIndex],width: MediaQuery.of(context).size.width, fit: BoxFit.cover,),
                         ),
                 options: CarouselOptions(

@@ -16,7 +16,9 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
       }
       return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: count, childAspectRatio: ratio),
+            crossAxisCount: count,
+            childAspectRatio: ratio
+            ),
         shrinkWrap: true,
         padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
@@ -31,41 +33,48 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                     border: Border.all(color: Colors.black38, width: 0.5)),
             child: InkWell(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(product: product))),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                   product.discount != 0?  Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: const BoxDecoration(color: Colors.red),
-                            child: Text(
-                              "${product.discount}%",
-                              style: TextStyle(color: Colors.white),
-                            ))) : Container(),
-                   Image.network(
-                            "${API().baseUrl}/images/${product.image}"),
-                    Positioned(
-                        left: 5,
-                        right: 5,
-                        bottom: 20,
-                        child: Text(
-                          product.name.toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        )),
-                    Positioned(
-                        left: 5,
-                        right: 5,
-                        bottom: 0,
-                        child: Text("\$${totalPrice.toStringAsPrecision(4)}",
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                         product.discount != 0?  Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: const BoxDecoration(color: Colors.red),
+                                  child: Text(
+                                    "${product.discount}%",
+                                    style: TextStyle(color: Colors.white),
+                                  ))) : Container(),
+                        Positioned(
+                          child:  Image.network(
+                                  "${API().baseUrl}/images/${product.image}"))
+                        ],
+                      ),
+                     Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                      child:  Text(
+                            product.name.toString(),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
                             style: const TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18)))
-                  ],
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Text("\$${totalPrice.toStringAsPrecision(4)}",
+                              style: const TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18)),
+                    )
+                    ],
+                  ),
                 ),
               ),
           );

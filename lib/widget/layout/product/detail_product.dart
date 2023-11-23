@@ -51,7 +51,6 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                               color: Colors.black)),
-                     
                     ])),
                     Row(children: [
                       Text("\$${product.price}",
