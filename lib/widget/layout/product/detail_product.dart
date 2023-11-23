@@ -31,7 +31,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                   children: [
                     RichText(
                         text: TextSpan(children: [
-                           WidgetSpan(child: Container(
+                          product.discount != 0 ?  WidgetSpan(child: Container(
                         margin: const EdgeInsets.only(right: 5),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
@@ -44,7 +44,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                               color: Colors.white)),
-                      )),
+                      )) : TextSpan(),
                       TextSpan(
                           text: product.name.toString(),
                           style: const TextStyle(
@@ -53,13 +53,13 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               color: Colors.black)),
                     ])),
                     Row(children: [
-                      Text("\$${product.price}",
+                     product.discount != 0 ?  Text("\$${product.price} ",
                           style: const TextStyle(
                               color: Colors.black26,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
-                              fontSize: 30)),
-                      const SizedBox(width: 10),
+                              fontSize: 30))
+                       : SizedBox(),
                       Text("\$${totalPrice.toStringAsPrecision(4)}",
                           style: const TextStyle(
                               color: Colors.red,
@@ -77,3 +77,4 @@ Widget detailProduct(BuildContext context, ProductModel product,
     ),
   );
 }
+

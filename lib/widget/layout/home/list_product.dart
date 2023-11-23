@@ -1,20 +1,14 @@
-import 'package:f_jzshop/app/data/bloc/product/product_cubit.dart';
-import 'package:f_jzshop/app/data/bloc/product/product_state.dart';
 import 'package:f_jzshop/app/data/repository/api/api.dart';
 import 'package:f_jzshop/app/model/product_model.dart';
 import 'package:f_jzshop/screen/product/product_sceen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget productList(List<ProductModel> products, int count, double ratio,double padding) {
   return Container(
     color: Colors.white,
     padding: EdgeInsets.symmetric(horizontal: padding),
-    child: BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
-      if (state is ProductLoaded) {
-        products = state.products;
-      }
-      return GridView.builder(
+    child: 
+     GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: count,
             childAspectRatio: ratio
@@ -33,8 +27,7 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                     border: Border.all(color: Colors.black38, width: 0.5)),
             child: InkWell(
               onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(product: product))),
-                child: Container(
-                  child: Column(
+                child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -48,7 +41,7 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                                   padding: EdgeInsets.all(5),
                                   decoration: const BoxDecoration(color: Colors.red),
                                   child: Text(
-                                    "${product.discount}%",
+                                    "-${product.discount}%",
                                     style: TextStyle(color: Colors.white),
                                   ))) : Container(),
                         Positioned(
@@ -75,11 +68,9 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                     )
                     ],
                   ),
-                ),
               ),
           );
         },
-      );
-    }),
+     )
   );
 }
