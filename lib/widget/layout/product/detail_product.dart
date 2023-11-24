@@ -33,7 +33,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                         text: TextSpan(children: [
                           product.discount != 0 ?  WidgetSpan(child: Container(
                         margin: const EdgeInsets.only(right: 5),
-                        padding: EdgeInsets.all(5),
+                        padding:  const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(5)
@@ -44,7 +44,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
                               color: Colors.white)),
-                      )) : TextSpan(),
+                      )) : const TextSpan(),
                       TextSpan(
                           text: product.name.toString(),
                           style: const TextStyle(
@@ -59,7 +59,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
                               fontSize: 30))
-                       : SizedBox(),
+                       : const SizedBox(),
                       Text("\$${totalPrice.toStringAsPrecision(4)}",
                           style: const TextStyle(
                               color: Colors.red,
@@ -77,4 +77,3 @@ Widget detailProduct(BuildContext context, ProductModel product,
     ),
   );
 }
-

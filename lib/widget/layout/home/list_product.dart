@@ -36,13 +36,13 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                         children: [
                          product.discount != 0?  Positioned(
                               top: 0,
-                              right: 0,
+                              left: 0,
                               child: Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: const BoxDecoration(color: Colors.red),
+                                  padding: EdgeInsets.all(3),
+                                  decoration: const BoxDecoration(color: Colors.red, borderRadius: BorderRadius.only(bottomRight: Radius.circular(7))),
                                   child: Text(
                                     "-${product.discount}%",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.white,fontSize: 12),
                                   ))) : Container(),
                         Positioned(
                           child:  Image.network(

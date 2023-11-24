@@ -15,7 +15,7 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-      List<ToppingModel> toppings = [];
+  List<ToppingModel> toppings = [];
   @override
   Widget build(BuildContext context) {
     var product = widget.product;

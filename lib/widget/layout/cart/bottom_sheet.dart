@@ -22,7 +22,7 @@ enum SizeList { S, M, L }
 class _BottomSheetCartState extends State<BottomSheetCart> {
   SizeList? _size = SizeList.S;
   double totalPrice = 0;
-  double totalTopping = 1;
+  double totalTopping = 0;
   List<ToppingModel> tempTopping = [];
   List<ToppingModel> listTopping = [];
   int count = 1;
@@ -59,11 +59,7 @@ class _BottomSheetCartState extends State<BottomSheetCart> {
   @override
   void dispose() {
     super.dispose();
-    totalPrice = 0;
-    totalTopping = 0;
-    for (int i = 0; i < widget.topping.length; i++) {
-      tempTopping[i].isCheck = false;
-    }
+   
   }
 
   @override

@@ -31,8 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
       if (state is ProductLoaded) {
         products = state.products;
-      }
-      return Center(
+        return Center(
         child: SingleChildScrollView(
             child: Column(children: [
           Responsive(
@@ -63,6 +62,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ]))
         ])),
       );
+      }
+      else{
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
     });
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:f_jzshop/app/data/bloc/auth/AuthCubit.dart';
 import 'package:f_jzshop/app/data/bloc/cart/cart_cubit.dart';
 import 'package:f_jzshop/app/data/bloc/category/category_cubit.dart';
 import 'package:f_jzshop/app/data/bloc/product/product_cubit.dart';
@@ -21,6 +22,7 @@ class MainApp extends StatelessWidget {
           BlocProvider(create: (context) => CategoryCubit()),
           BlocProvider(create: (context) => ProductCubit()),
           BlocProvider(create: (context) => CartCubit()),
+          BlocProvider(create: (context) => AuthCubit()),
           BlocProvider(create: (context) => ToppingCubit())
         ],
         child: MaterialApp(
@@ -33,7 +35,7 @@ class MainApp extends StatelessWidget {
                 PointerDeviceKind.unknown
               },
             ),
-            initialRoute: "/",
+            initialRoute: AuthCubit.token == "" ? "SignIn" : "/",
             onGenerateRoute: AppRoute.onGenerateRoute));
   }
 }
