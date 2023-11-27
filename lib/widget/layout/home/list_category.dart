@@ -2,7 +2,7 @@ import 'package:f_jzshop/app/data/bloc/category/category_state.dart';
 import 'package:f_jzshop/app/data/bloc/category/category_cubit.dart';
 import 'package:f_jzshop/app/data/repository/api/api.dart';
 import 'package:f_jzshop/app/model/category_model.dart';
-import 'package:f_jzshop/screen/product/product_filter_screen.dart';
+import 'package:f_jzshop/screen/product/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +29,7 @@ Widget categoryList(
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ProductSearchScreen(
+                            builder: (context) => ProductsScreen(
                                   products: category.products!,
                                   category: category.name,
                                 )));

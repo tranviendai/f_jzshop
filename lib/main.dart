@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
                 PointerDeviceKind.unknown
               },
             ),
-            initialRoute: AuthCubit.token == "" ? "SignIn" : "/",
+            initialRoute: "Splash",
             onGenerateRoute: AppRoute.onGenerateRoute));
   }
 }

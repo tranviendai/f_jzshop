@@ -3,17 +3,17 @@ import 'package:f_jzshop/app/model/product_model.dart';
 import 'package:f_jzshop/widget/layout/home/list_product.dart';
 import 'package:flutter/material.dart';
 
-class ProductSearchScreen extends StatefulWidget {
+class ProductsScreen extends StatefulWidget {
   final List<ProductModel> products;
   final String? category;
-  const ProductSearchScreen(
+  const ProductsScreen(
       {super.key, required this.products, required this.category});
 
   @override
-  State<ProductSearchScreen> createState() => _ProductSearchScreenState();
+  State<ProductsScreen> createState() => _ProductsScreenState();
 }
 
-class _ProductSearchScreenState extends State<ProductSearchScreen> {
+class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

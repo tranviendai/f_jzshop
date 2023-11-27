@@ -5,7 +5,7 @@ class API{
   final Dio _dio = Dio();
   //flutter run -d chrome --web-port=4000
   //192.168.1.13
-     String baseUrl = "http://192.168.1.13";  //web
+     String baseUrl = "http://172.31.14.210";  //web
   // String baseUrl = "http://10.0.2.2:5172";   phone
    // String baseUrl = "http://127.0.0.1:5172";   
 

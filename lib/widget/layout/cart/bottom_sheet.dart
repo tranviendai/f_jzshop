@@ -32,9 +32,7 @@ class _BottomSheetCartState extends State<BottomSheetCart> {
     super.initState();
     totalPrice = widget.product.price! -
         (widget.product.discount! / 100 * widget.product.price!);
-    tempTopping = widget.topping;
   }
-
   void itemCountPlus() {
     if (count > 11) count = 11;
     setState(() {
@@ -55,11 +53,10 @@ class _BottomSheetCartState extends State<BottomSheetCart> {
       totalPrice = price;
     });
   }
-  
   @override
   void dispose() {
     super.dispose();
-   
+    for (var item in tempTopping) { item.isCheck = false;}
   }
 
   @override
@@ -102,7 +99,7 @@ class _BottomSheetCartState extends State<BottomSheetCart> {
                                 fontSize: 20, fontWeight: FontWeight.bold,color: Colors.black))
                       ]
                     )),
-                  textAlignLeft(const Text("Select Size:",
+                  textAlignLeft(const SelectableText("Select Size:",
                       style: TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold))),
                   RadioListTile(
@@ -151,8 +148,8 @@ class _BottomSheetCartState extends State<BottomSheetCart> {
                       groupValue: _size,
                       onChanged: (value) => onChangeSelect(value, typeL)),
                   Column(children: [
-                    textAlignLeft(Text(
-                        "Select Topping (Maximum: ${tempTopping.length}):",
+                    textAlignLeft(SelectableText(
+                        "Select Topping (Selected: ${listTopping.length})",
                         style:const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold))),
                     Container(

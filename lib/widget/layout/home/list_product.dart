@@ -1,6 +1,6 @@
 import 'package:f_jzshop/app/data/repository/api/api.dart';
 import 'package:f_jzshop/app/model/product_model.dart';
-import 'package:f_jzshop/screen/product/product_sceen.dart';
+import 'package:f_jzshop/screen/product/product_detail.dart';
 import 'package:flutter/material.dart';
 
 Widget productList(List<ProductModel> products, int count, double ratio,double padding) {
@@ -26,7 +26,7 @@ Widget productList(List<ProductModel> products, int count, double ratio,double p
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black38, width: 0.5)),
             child: InkWell(
-              onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductScreen(product: product))),
+              onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> ProductDetail(product: product))),
                 child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -6,15 +6,15 @@ import 'package:f_jzshop/widget/layout/cart/bottom_sheet.dart';
 import 'package:f_jzshop/widget/layout/product/detail_product.dart';
 import 'package:flutter/material.dart';
 
-class ProductScreen extends StatefulWidget {
+class ProductDetail extends StatefulWidget {
   final ProductModel product;
-  const ProductScreen({super.key, required this.product});
+  const ProductDetail({super.key, required this.product});
 
   @override
-  State<ProductScreen> createState() => _ProductScreenState();
+  State<ProductDetail> createState() => _ProductDetailState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductDetailState extends State<ProductDetail> {
   List<ToppingModel> toppings = [];
   @override
   Widget build(BuildContext context) {

@@ -20,8 +20,8 @@ Widget detailProduct(BuildContext context, ProductModel product,
                       child: Image.network(
                           "${API().baseUrl}/images/${product.image}",
                           height: height))
-                  : Image.network("${API().baseUrl}/images/${product.image}",
-                      height: height),
+                  : Hero(tag: "img", child: Image.network("${API().baseUrl}/images/${product.image}",
+                      height: height)),
               SizedBox(
                 width: !imgWrap
                     ? MediaQuery.of(context).size.width / 1.8
@@ -66,7 +66,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                               fontWeight: FontWeight.bold,
                               fontSize: 30))
                     ]),
-                    Text("${product.description}")
+                    SelectableText("${product.description}")
                   ],
                 ),
               )

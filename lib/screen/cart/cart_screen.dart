@@ -128,7 +128,7 @@ class _CartScreenState extends State<CartScreen> {
                                                                         1;
                                                               });
                                                             },
-                                                            icon: Icon(Icons.remove))
+                                                            icon: const Icon(Icons.remove))
                                                         : IconButton(
                                                             onPressed: () {
                                                               context
@@ -212,7 +212,7 @@ class _CartScreenState extends State<CartScreen> {
                         )),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: ElevatedButton(onPressed: (){}, 
                     style: ButtonStyle(
                         backgroundColor:

@@ -1,7 +1,7 @@
 import 'package:f_jzshop/screen/auth/login_screen.dart';
-import 'package:f_jzshop/screen/auth/profile_screen.dart';
 import 'package:f_jzshop/screen/cart/cart_screen.dart';
 import 'package:f_jzshop/screen/home/home_sceen.dart';
+import 'package:f_jzshop/screen/splash/splash_screen.dart';
 import 'package:f_jzshop/widget/nav/navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +10,8 @@ class AppRoute {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const MyNavbar());
+      case 'Splash':
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case 'Home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case 'Cart':

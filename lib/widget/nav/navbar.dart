@@ -16,7 +16,7 @@ class MyNavbar extends StatefulWidget {
 
 class _MyNavbarState extends State<MyNavbar> {
     int _selectedIndex = 0;
-    UserModel user = UserModel();
+    var user = UserModel();
 
     @override
   void initState() {
@@ -28,8 +28,13 @@ class _MyNavbarState extends State<MyNavbar> {
       _selectedIndex = index;
    });
   }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> widgetOptions = [
+      HomeScreen(),
+      ProfileScreen(user: user),
+    ];
     return Scaffold(
        body: BlocBuilder<AuthCubit,AuthState>(
           builder: (context, state) {
@@ -53,14 +58,16 @@ class _MyNavbarState extends State<MyNavbar> {
                   centerTitle: true,
                   actions: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, "Cart");
+                        },
                         icon: const Icon(
                           Icons.shopping_cart,
                           color: Colors.white,
                         ))
                   ],
                 ),
-                body: const HomeScreen(),
+                body: widgetOptions[_selectedIndex],
                 bottomNavigationBar: BottomNavigationBar(
                   showUnselectedLabels: false,
                   showSelectedLabels: false,

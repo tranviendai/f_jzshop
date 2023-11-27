@@ -1,3 +1,4 @@
+import 'package:f_jzshop/app/config/reponsive.dart';
 import 'package:f_jzshop/app/model/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
   var user = widget.user;
+    return Responsive(
+      desktop: profile(user,true),
+      mobile: profile(user,false),
+      tablet: profile(user,true),
+    );
+  }
+  Widget profile(UserModel user, bool isAppBar){
     return Scaffold(
-      appBar: AppBar(
+      appBar: isAppBar ? AppBar(
           leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -26,6 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         backgroundColor: Colors.blue,
         title: Text(user.fullName!,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+      ) : AppBar(
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -35,7 +45,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(user.image!,height: 150),
+              Hero(
+                tag: "avt",
+                child: Image.network(user.image!,height: 150),
+              ),
               Text("FullName: ${user.fullName!}",style: const TextStyle(fontSize: 30)),
               Text("Email: ${user.email!}",style: const TextStyle(fontSize: 24)),
               Text("Phone Number: ${user.phoneNumber!}",style:const  TextStyle(fontSize: 22)),

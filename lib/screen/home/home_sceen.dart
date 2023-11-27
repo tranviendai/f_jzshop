@@ -3,7 +3,7 @@ import 'package:f_jzshop/app/data/bloc/product/product_cubit.dart';
 import 'package:f_jzshop/app/data/bloc/product/product_state.dart';
 import 'package:f_jzshop/app/model/category_model.dart';
 import 'package:f_jzshop/app/model/product_model.dart';
-import 'package:f_jzshop/screen/product/product_filter_screen.dart';
+import 'package:f_jzshop/screen/product/products_screen.dart';
 import 'package:f_jzshop/widget/layout/home/list_category.dart';
 import 'package:f_jzshop/widget/layout/home/list_product.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +119,7 @@ Widget seeAll(
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ProductSearchScreen(
+                  builder: (context) => ProductsScreen(
                         products: products,
                         category: "All Product",
                       )));
