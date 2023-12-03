@@ -16,4 +16,12 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthErorrState(ex.toString()));
     }
   }
+  void clearUsers() async{
+    try {
+      UserModel user = UserModel();
+      emit(AuthLoadedState(user));
+    } catch (ex) {
+      emit(AuthErorrState(ex.toString()));
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:f_jzshop/app/config/reponsive.dart';
 import 'package:f_jzshop/app/data/bloc/auth/AuthCubit.dart';
 import 'package:f_jzshop/app/data/bloc/auth/AuthState.dart';
+import 'package:f_jzshop/app/data/repository/repository.dart';
 import 'package:f_jzshop/app/model/user_model.dart';
 import 'package:f_jzshop/screen/auth/profile_screen.dart';
 import 'package:f_jzshop/screen/home/home_sceen.dart';
@@ -21,7 +22,12 @@ class _MyNavbarState extends State<MyNavbar> {
     @override
   void initState() {
     super.initState();
-    context.read<AuthCubit>().getUsers();
+    if(AuthCubit.token != ""){
+      context.read<AuthCubit>().getUsers();
+    }else{
+      context.read<AuthCubit>().clearUsers();
+      Navigator.pushNamed(context, "SignIn");
+    }
   }
   void _onItemTapped(int index){
    setState(() {
@@ -32,7 +38,7 @@ class _MyNavbarState extends State<MyNavbar> {
   @override
   Widget build(BuildContext context) {
     List<Widget> widgetOptions = [
-      HomeScreen(),
+      const HomeScreen(),
       ProfileScreen(user: user),
     ];
     return Scaffold(
@@ -86,7 +92,6 @@ class _MyNavbarState extends State<MyNavbar> {
                 body: Center(child: CircularProgressIndicator()),
               );
              }
-           
           }
         ),
     );
@@ -127,7 +132,7 @@ Widget itemNav(
             Navigator.pushNamed(context, "Cart");
           case Icons.logout:
             {
-              AuthCubit.token = "";
+              APIRepository().logOut();
               Navigator.pop(context);
             }
             case Icons.person:

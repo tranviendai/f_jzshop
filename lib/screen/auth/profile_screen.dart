@@ -1,4 +1,5 @@
 import 'package:f_jzshop/app/config/reponsive.dart';
+import 'package:f_jzshop/app/data/repository/repository.dart';
 import 'package:f_jzshop/app/model/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Text("Email: ${user.email!}",style: const TextStyle(fontSize: 24)),
               Text("Phone Number: ${user.phoneNumber!}",style:const  TextStyle(fontSize: 22)),
               Text("Date Created: ${user.dateCreated!}",style: const TextStyle(fontSize: 20)),
+              TextButton(
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.black12),
+                  padding: MaterialStatePropertyAll(EdgeInsets.all(20))
+                ),
+                onPressed: (){
+                 APIRepository().logOut();
+                Navigator.pushNamed(context, "SignIn");
+              }, child: const Text("LogOut", style: TextStyle(color: Colors.blue,letterSpacing: 2.5),)
+              )
             ],
           ),
         ),

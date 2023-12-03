@@ -63,7 +63,25 @@ class APIRepository{
       rethrow;
     }
   }
-
+   Future<String> register(BuildContext context,String username, String password,String fullname) async {
+    try {
+      final body = {'userName': username, 'password': password, 'fullName': fullname};
+      Response res = await api.sendRequest
+          .post('/Auth/register', options: Options(headers: header), data: body);
+      if (res.statusCode == 200) {
+       return login(context, username, password);
+      } else {
+        return "register error";
+      }
+    } catch (ex) {
+      // ignore: use_build_context_synchronously
+      showError(context, "Account already exists");
+      rethrow;
+    }
+  }
+  Future<String> logOut() async {
+     return  AuthCubit.token = "";
+  }
   Future<UserModel> getUser() async {
     try {
       Response res = await api.sendRequest.get('/Auth/current',
@@ -78,4 +96,5 @@ class APIRepository{
       rethrow;
     }
   }
+
 }

@@ -19,7 +19,7 @@ Widget detailProduct(BuildContext context, ProductModel product,
                       alignment: Alignment.center,
                       child: Image.network(
                           "${API().baseUrl}/images/${product.image}",
-                          height: height))
+                          height: height) )
                   : Hero(tag: "img", child: Image.network("${API().baseUrl}/images/${product.image}",
                       height: height)),
               SizedBox(
